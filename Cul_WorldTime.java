@@ -58,16 +58,13 @@ public class Cul_WorldTime{
 		}
 	}
 
+
+//·‚ğŒvZ(–¢À‘•)
 	/*public int cul_time_diff() {
 		
 	//	return int 1
 	}
-	
-	
-	
 }
-
-
 	*/
 
 //“ü—Í’l‚Ì”»’è‚ğs‚¤
