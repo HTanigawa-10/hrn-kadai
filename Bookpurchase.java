@@ -5,39 +5,39 @@ public class Bookpurchase {
 
 	    public static void main(String args[] ) throws Exception {
 	    
-	        int N = 0;//Ğˆõ”
-	        int M = 0;//–{‚Ìû”
-	        String o_j = null; //w“ü—š—ğ@Ğˆõ–¼
-	        Integer p_j = 0; //w“ü‹àŠz   0`N”Ô‚Å[w“ü—š—ğ@Ğˆõ–¼]‚Æ•R‚Ã‚¯
+	        int N = 0;//ç¤¾å“¡æ•°
+	        int M = 0;//æœ¬ã®å†Šæ•°
+	        String o_j = null; //è³¼å…¥å±¥æ­´ã€€ç¤¾å“¡å
+	        Integer p_j = 0; //è³¼å…¥é‡‘é¡
 	        Map<String, Integer> map = new HashMap<>(); 
 	    	Scanner sc = new Scanner(System.in);
 	        
-	        System.out .println("Ğˆõ”‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B");
+	        System.out .println("ç¤¾å“¡æ•°ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚");
 	  
-	  //Ğˆõ”‚ğæ“¾‚·‚éB      
+	  //ç¤¾å“¡æ•°ã‚’å–å¾—ã™ã‚‹ã€‚      
 	        try {
 	        	N = sc.nextInt();
-	        	//“ü—Í’lƒ`ƒFƒbƒN(”¼Šp”’l)
+	        	//å…¥åŠ›å€¤ãƒã‚§ãƒƒã‚¯(åŠè§’æ•°å€¤)
 	        	checkNumRange(N);
 	        }catch(InputMismatchException e) {
 	        	sc.close();
 	        	throw new IllegalArgumentException(MSG.EMSG1);
 	        }
 	        
-	        System.out .println("Ğˆõ–¼‚ğ”¼ŠpƒXƒy[ƒX‹æØ‚è‚Å“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B");
+	        System.out .println("ç¤¾å“¡åã‚’åŠè§’ã‚¹ãƒšãƒ¼ã‚¹åŒºåˆ‡ã‚Šã§å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚");
 	        
 	        String[] s_N = new String[N];
 	        
-	  //Ğˆõ–¼‚ğ”¼ŠpƒXƒy[ƒX‹æØ‚è‚Åæ“¾‚·‚éB 
+	  //ç¤¾å“¡åã‚’åŠè§’ã‚¹ãƒšãƒ¼ã‚¹åŒºåˆ‡ã‚Šã§å–å¾—ã™ã‚‹ã€‚ 
 	        sc = new Scanner(System.in);
 	        String s = sc.nextLine();
 	        s_N = s.split(" ");
 	        
 	        for(String n : s_N ) {
 	        	int count = 0;
-	        //•¶š”ƒ`ƒFƒbƒN
+	        //æ–‡å­—æ•°ãƒã‚§ãƒƒã‚¯
 	        	checkName(n);
-	        //d•¡ƒ`ƒFƒbƒN
+	        //é‡è¤‡ãƒã‚§ãƒƒã‚¯
 	        	for(String same_name : s_N ) {
 	        		if(same_name.equals(n))count++;
 	        			if(count == 2) {
@@ -45,27 +45,27 @@ public class Bookpurchase {
 	        				throw new IllegalArgumentException(MSG.EMSG4);
 	        			}
 	        	}
-	        }
+	    	}
 	        
-	  //hashmap‚ÉƒL[FĞˆõ–¼A’lF0‚Æ‚µ‚Äİ’èA
+	  //hashmapã«ã‚­ãƒ¼ï¼šç¤¾å“¡åã€å€¤ï¼š0ã¨ã—ã¦è¨­å®šã€
 	        for(String a: s_N) {
 	        	map.put(a, 0);  
 	        }
 	        
-	        System.out .println("—š—ğ‚Ì”‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B");
+	        System.out .println("å±¥æ­´ã®æ•°ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚");
 	        
-      //Ğˆõ‚½‚¿‚ªw“ü‚µ‚½–{‚Ìû”M‚ğæ“¾‚·‚éB      
+          //ç¤¾å“¡ãŸã¡ãŒè³¼å…¥ã—ãŸæœ¬ã®å†Šæ•°Mã‚’å–å¾—ã™ã‚‹ã€‚      
 	        try {
 	            sc = new Scanner(System.in);
 	        	M = sc.nextInt();
 	        	checkNumRange(M);
 	        }catch(InputMismatchException e) {
-	        	//“ü—Í’l‚ª”¼Šp”’lˆÈŠO‚Ìê‡
+	        	//å…¥åŠ›å€¤ãŒåŠè§’æ•°å€¤ä»¥å¤–ã®å ´åˆ
 	        	sc.close();
 	        	throw new IllegalArgumentException(MSG.EMSG1);
 	        }
-	        System.out .println("Ğˆõ–¼‚Æw“ü‹àŠz‚ğ”¼ŠpƒXƒy[ƒX‹æØ‚è‚Å“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B");
-	   //Ğˆõ‚½‚¿‚ªw“ü‚µ‚½–{‚Ìw“ü‹àŠzp_j‚ğ”¼ŠpƒXƒy[ƒX‹æØ‚è‚Åæ“¾‚·‚éB@@Ğˆõ–¼  w“ü‹àŠz
+	        System.out .println("ç¤¾å“¡åã¨è³¼å…¥é‡‘é¡ã‚’åŠè§’ã‚¹ãƒšãƒ¼ã‚¹åŒºåˆ‡ã‚Šã§å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚");
+	   //ç¤¾å“¡ãŸã¡ãŒè³¼å…¥ã—ãŸæœ¬ã®è³¼å…¥é‡‘é¡p_jã‚’åŠè§’ã‚¹ãƒšãƒ¼ã‚¹åŒºåˆ‡ã‚Šã§å–å¾—ã™ã‚‹ã€‚ã€€ã€€ç¤¾å“¡å  è³¼å…¥é‡‘é¡
 	        
 	        String[] s_M = new String[M];
 	        for (int i = 0; i < M; i++) {
@@ -75,19 +75,19 @@ public class Bookpurchase {
 	            
 	            s_M = s4.split(" ",-1);
 	            o_j = s_M[0];
-	            //•¶š”ƒ`ƒFƒbƒN
+	            //æ–‡å­—æ•°ãƒã‚§ãƒƒã‚¯
 	            checkName(o_j);
 	            
-	            //“ü—Í’lƒ`ƒFƒbƒN(”¼Šp”’l,”ÍˆÍ)
+	            //å…¥åŠ›å€¤ãƒã‚§ãƒƒã‚¯(åŠè§’æ•°å€¤,ç¯„å›²)
 	            try {
 	            	p_j = Integer.valueOf(s_M[1]);
 	            	checkNumRange2(p_j);
 	            }catch(NumberFormatException e) {
-	            	throw new IllegalArgumentException("w“ü‹àŠz‚Í" + MSG.EMSG1);
+	            	throw new IllegalArgumentException("è³¼å…¥é‡‘é¡ã¯" + MSG.EMSG1);
 	            }
 	            
 	            
-	            //Ğˆõ–¼‚ªkey‚Æˆê’v‚·‚éê‡‚ÍAw“ü‹àŠz‚ğval‚É‰ÁZ
+	            //ç¤¾å“¡åãŒkeyã¨ä¸€è‡´ã™ã‚‹å ´åˆã¯ã€è³¼å…¥é‡‘é¡ã‚’valã«åŠ ç®—
 	            for(String key: map.keySet()) {
 	            	if(o_j.equals(key)){
 	            		 Integer val = map.get(key);
@@ -96,69 +96,69 @@ public class Bookpurchase {
 	            }
 	        }
 	        
-	    //w“ü‹àŠz‚ª‚‚¢‡‚ÉĞˆõ–¼‚ğo—Í
+	    //è³¼å…¥é‡‘é¡ãŒé«˜ã„é †ã«ç¤¾å“¡åã‚’å‡ºåŠ›
 	        
 	        List<Entry<String, Integer>> list_entries = new ArrayList<Entry<String, Integer>>(map.entrySet());	        
 	        Collections.sort(list_entries, new Comparator<Entry<String, Integer>>() {
-	            //compare‚ğg—p‚µ‚Ä’l‚ğ”äŠr‚·‚é
+	            //compareã‚’ä½¿ç”¨ã—ã¦å€¤ã‚’æ¯”è¼ƒã™ã‚‹
 	            public int compare(Entry<String, Integer> obj1, Entry<String, Integer> obj2)
 	            {
-	                //~‡
+	                //é™é †
 	                return obj2.getValue().compareTo(obj1.getValue());
 	            }
 	        });
 	        
-	        System.out.println("‘Ğw“üÒˆê——(~‡)");
-	        // 7. ƒ‹[ƒv‚Å—v‘f‡‚É’l‚ğæ“¾‚·‚é
+	        System.out.println("æ›¸ç±è³¼å…¥è€…ä¸€è¦§(é™é †)");
+	        // 7. ãƒ«ãƒ¼ãƒ—ã§è¦ç´ é †ã«å€¤ã‚’å–å¾—ã™ã‚‹
 	        for(Entry<String, Integer> entry : list_entries) {
 	            System.out.println(entry.getKey() + " : " + entry.getValue());
 	        }
 	    }
 	    
-	    /* Ğˆõ”A–{‚Ì”“ü—Íƒ`ƒFƒbƒN
-	     * ƒpƒ‰ƒ[ƒ^‚ª”¼Šp”š‚©‚ÂÅ¬’lˆÈãAÅ‘å’lˆÈ‰º‚Å‚ ‚ê‚Î‚»‚Ì’l‚ğ•Ô‹p‚·‚éB
+	    /* ç¤¾å“¡æ•°ã€æœ¬ã®æ•°å…¥åŠ›ãƒã‚§ãƒƒã‚¯
+	     * ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒåŠè§’æ•°å­—ã‹ã¤æœ€å°å€¤ä»¥ä¸Šã€æœ€å¤§å€¤ä»¥ä¸‹ã§ã‚ã‚Œã°ãã®å€¤ã‚’è¿”å´ã™ã‚‹ã€‚
 	    */
 	    public static int checkNumRange(int n) {
-			// Å¬’lˆÈãAÅ¬’lˆÈ‰º‚Ì”»’è
+			// æœ€å°å€¤ä»¥ä¸Šã€æœ€å°å€¤ä»¥ä¸‹ã®åˆ¤å®š
 			if (1 <= n && n <= 100) {
-				// ”»’èOK‚È‚ç‚»‚Ì’l‚ğ•Ô‹p‚·‚é
+				// åˆ¤å®šOKãªã‚‰ãã®å€¤ã‚’è¿”å´ã™ã‚‹
 				return n;
 			}
-			// ”»’èNG‚È‚çƒGƒ‰[
+			// åˆ¤å®šNGãªã‚‰ã‚¨ãƒ©ãƒ¼
 			throw new IllegalArgumentException(MSG.EMSG2);
 		}
 	    
-	    /* w“ü‹àŠz“ü—Íƒ`ƒFƒbƒN
-	     * ƒpƒ‰ƒ[ƒ^‚ª”¼Šp”š‚©‚ÂÅ¬’lˆÈãAÅ‘å’lˆÈ‰º‚Å‚ ‚ê‚Î‚»‚Ì’l‚ğ•Ô‹p‚·‚éB
+	    /* è³¼å…¥é‡‘é¡å…¥åŠ›ãƒã‚§ãƒƒã‚¯
+	     * ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒåŠè§’æ•°å­—ã‹ã¤æœ€å°å€¤ä»¥ä¸Šã€æœ€å¤§å€¤ä»¥ä¸‹ã§ã‚ã‚Œã°ãã®å€¤ã‚’è¿”å´ã™ã‚‹ã€‚
 	    */
 	    public static int checkNumRange2(int n) {
-			// Å¬’lˆÈãAÅ¬’lˆÈ‰º‚Ì”»’è
+			// æœ€å°å€¤ä»¥ä¸Šã€æœ€å°å€¤ä»¥ä¸‹ã®åˆ¤å®š
 			if (1 <= n && n <= 10000) {
-				// ”»’èOK‚È‚ç‚»‚Ì’l‚ğ•Ô‹p‚·‚é
+				// åˆ¤å®šOKãªã‚‰ãã®å€¤ã‚’è¿”å´ã™ã‚‹
 				return n;
 			}
-			// ”»’èNG‚È‚çƒGƒ‰[
+			// åˆ¤å®šNGãªã‚‰ã‚¨ãƒ©ãƒ¼
 			throw new IllegalArgumentException(MSG.EMSG3);
 		}
 	    
-	    /* Ğˆõ–¼“ü—Íƒ`ƒFƒbƒN
-	     * •¶š”‚ªÅ¬’lˆÈãAÅ‘å’lˆÈ‰º‚Å‚ ‚ê‚Î‚»‚Ì’l‚ğ•Ô‹p‚·‚éB
+	    /* ç¤¾å“¡åå…¥åŠ›ãƒã‚§ãƒƒã‚¯
+	     * æ–‡å­—æ•°ãŒæœ€å°å€¤ä»¥ä¸Šã€æœ€å¤§å€¤ä»¥ä¸‹ã§ã‚ã‚Œã°ãã®å€¤ã‚’è¿”å´ã™ã‚‹ã€‚
 	    */
 	    public static void checkName(String name) {
-			// Å¬’lˆÈãAÅ¬’lˆÈ‰º‚Ì”»’è
+			// æœ€å°å€¤ä»¥ä¸Šã€æœ€å°å€¤ä»¥ä¸‹ã®åˆ¤å®š
 			if (1 <= name.length() && name.length() <= 20) {
 				return;
 			}
-			// ”»’èNG‚È‚çƒGƒ‰[
+			// åˆ¤å®šNGãªã‚‰ã‚¨ãƒ©ãƒ¼
 			throw new IllegalArgumentException(MSG.EMSG4);
 		}
 	       
 public class MSG{
-	public static final String EMSG1 = "”¼Šp”š‚Å“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B";
-	public static final String EMSG2 = "1ˆÈã100ˆÈ‰º‚Ì”’l‚ğ“ü—Í‚µ‚Ä‰º‚³‚¢B";
-	public static final String EMSG3 = "1ˆÈã10000ˆÈ‰º‚Ì”’l‚ğ“ü—Í‚µ‚Ä‰º‚³‚¢B";
-	public static final String EMSG4 = "Ğˆõ–¼‚Í‚ğ20šˆÈ“à‚Å“ü—Í‚µ‚Ä‰º‚³‚¢B"; 
-	public static final String EMSG5 = "Ğˆõ–¼‚ªd•¡‚µ‚Ä‚¢‚Ü‚·B"; 
+	public static final String EMSG1 = "åŠè§’æ•°å­—ã§å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚";
+	public static final String EMSG2 = "1ä»¥ä¸Š100ä»¥ä¸‹ã®æ•°å€¤ã‚’å…¥åŠ›ã—ã¦ä¸‹ã•ã„ã€‚";
+	public static final String EMSG3 = "1ä»¥ä¸Š10000ä»¥ä¸‹ã®æ•°å€¤ã‚’å…¥åŠ›ã—ã¦ä¸‹ã•ã„ã€‚";
+	public static final String EMSG4 = "ç¤¾å“¡åã¯ã‚’20å­—ä»¥å†…ã§å…¥åŠ›ã—ã¦ä¸‹ã•ã„ã€‚"; 
+	public static final String EMSG5 = "ç¤¾å“¡åãŒé‡è¤‡ã—ã¦ã„ã¾ã™ã€‚"; 
 }
 }
 
