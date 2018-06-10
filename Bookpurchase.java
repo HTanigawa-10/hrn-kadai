@@ -1,7 +1,7 @@
 import java.util.*;
 import java.util.Map.Entry;
 
-public class Bookpurchase {
+public class BookPurchase {
 
 	    public static void main(String args[] ) throws Exception {
 	    
