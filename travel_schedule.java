@@ -3,60 +3,61 @@ package kadai_06;
 import java.util.Scanner;
 
 public class travel_schedule {
-	/**˜A‹x‚Ì“ú”**/
+	/**é€£ä¼‘ã®æ—¥æ•°**/
 	private int M = 0;
-	/**—·s‚Ì“ú”**/
+	/**æ—…è¡Œã®æ—¥æ•°**/
 	private int N = 0;
-	/**˜A‹x‚Ì“ú•t**/
+	/**é€£ä¼‘ã®æ—¥ä»˜**/
 	private int[] consecutiveHolidays;
-	/**˜A‹x‚Ì~…Šm—¦**/
+	/**é€£ä¼‘ã®é™æ°´ç¢ºç‡**/
 	private int[] rainfallProbability;
 	
 	public static travel_schedule ts = null;
-	
 	Scanner sc = null;
 	
 	public static void main(String ars[]) {
 		
-		System.out.println("˜A‹x‚Ì“ú”‚Æ—·s‚Ì“ú”‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B(”¼ŠpƒXƒy[ƒX‹æØ‚è)");
-
+		System.out.println("é€£ä¼‘ã®æ—¥æ•°ã¨æ—…è¡Œã®æ—¥æ•°ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚(åŠè§’ã‚¹ãƒšãƒ¼ã‚¹åŒºåˆ‡ã‚Š)");
+		
 		try {
 			ts = new travel_schedule();
-			//[0]˜A‹x“ú”M‚Æ[1]—·s“ú”N‚ğæ“¾‚·‚éB
+			//[0]é€£ä¼‘æ—¥æ•°Mã¨[1]æ—…è¡Œæ—¥æ•°Nã‚’å–å¾—ã™ã‚‹ã€‚
 			String s[] = ts.getSchedule(); 
 			ts.M = Integer.parseInt(s[0]);
 			ts.N = Integer.parseInt(s[1]);
 		
-			//“ü—Íƒ`ƒFƒbƒN
+			//å…¥åŠ›ãƒã‚§ãƒƒã‚¯
 			ts.checkInputNum(ts.M,ts.N);
 		
-			System.out.println("˜A‹x‚Ì“ú•t‚ÆŠe“ú‚Ì~…Šm—¦(%)‚ğ”¼ŠpƒXƒy[ƒX‹æØ‚è‚Å“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B");
+			System.out.println("é€£ä¼‘ã®æ—¥ä»˜ã¨å„æ—¥ã®é™æ°´ç¢ºç‡(%)ã‚’åŠè§’ã‚¹ãƒšãƒ¼ã‚¹åŒºåˆ‡ã‚Šã§å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚");
 		
-			//˜A‹x‚Ì“ú•t‚ÆAŠe“ú‚É‚¿‚Ì~…Šm—¦‚ğæ“¾B	
+			//é€£ä¼‘ã®æ—¥ä»˜ã¨ã€å„æ—¥ã«ã¡ã®é™æ°´ç¢ºç‡ã‚’å–å¾—ã€‚	
 			ts.setRainfallProbability(ts.M ,ts.N);
+			
 		} catch (Exception e){
-			System.out.println("“ü—Í’l‚Ì“Ç‚İæ‚è‚É¸”s‚µ‚Ü‚µ‚½B");
+			System.out.println("å…¥åŠ›å€¤ã®èª­ã¿å–ã‚Šã«å¤±æ•—ã—ã¾ã—ãŸã€‚");
 			e.printStackTrace();
+			
 		} finally {
-			//ƒCƒ“ƒXƒ^ƒ“ƒX‚ÌƒNƒ[ƒYˆ—
+			//ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ã‚¯ãƒ­ãƒ¼ã‚ºå‡¦ç†
 			if (ts.sc != null) {ts.sc.close();};
 		}
 			
-		//“ü—Íƒ`ƒFƒbƒN
+		//å…¥åŠ›ãƒã‚§ãƒƒã‚¯
 		ts.checkRainfallProbability(ts.consecutiveHolidays, ts.rainfallProbability);
 		
-		//—·sŠúŠÔ’†‚É~…Šm—¦‚ªÅ‚à’á‚­‚È‚éŠúŠÔ‚ğŒvZAo—Í‚·‚éB
+		//æ—…è¡ŒæœŸé–“ä¸­ã«é™æ°´ç¢ºç‡ãŒæœ€ã‚‚ä½ããªã‚‹æœŸé–“ã‚’è¨ˆç®—ã€å‡ºåŠ›ã™ã‚‹ã€‚
 		String result = ts.getTravelDays(ts.M, ts.N, ts.consecutiveHolidays, ts.rainfallProbability);
-		System.out.println("~…Šm—¦‚ªÅ‚à’á‚­‚È‚éŠúŠÔ");
+		System.out.println("é™æ°´ç¢ºç‡ãŒæœ€ã‚‚ä½ããªã‚‹æœŸé–“");
 		System.out.println(result);
 	}
 	
 	/*
-	 * ˜A‹x“ú”‚Æ—·s“ú”‚Ì“ü—Íˆ—‚ğ‚µ‚Ü‚·B
-	 * @return s ˜A‹x“ú”‚Æ—·s“ú”‚ğŠi”[‚·‚é”z—ñ
+	 * é€£ä¼‘æ—¥æ•°ã¨æ—…è¡Œæ—¥æ•°ã®å…¥åŠ›å‡¦ç†ã‚’ã—ã¾ã™ã€‚
+	 * @return s é€£ä¼‘æ—¥æ•°ã¨æ—…è¡Œæ—¥æ•°ã‚’æ ¼ç´ã™ã‚‹é…åˆ—
 	 */
 	public String[] getSchedule() throws Exception {
-		/**“ü—Í’l‚ğˆê“I‚ÉŠi”[**/
+		/**å…¥åŠ›å€¤ã‚’ä¸€æ™‚çš„ã«æ ¼ç´**/
 		String[] s = null;
 		
 		ts.sc = new Scanner(System.in);
@@ -67,36 +68,36 @@ public class travel_schedule {
 	}
 	
 	/*
-	 * ˜A‹x“ú”‚Æ—·s“ú”‚Ì“ü—Í’lƒ`ƒFƒbƒNBƒGƒ‰[‚Ìê‡‚Íˆ—I—¹B
-	 * @param M ˜A‹x‚Ì“ú”
-	 * @param N@—·s‚Ì“ú”
+	 * é€£ä¼‘æ—¥æ•°ã¨æ—…è¡Œæ—¥æ•°ã®å…¥åŠ›å€¤ãƒã‚§ãƒƒã‚¯ã€‚ã‚¨ãƒ©ãƒ¼ã®å ´åˆã¯å‡¦ç†çµ‚äº†ã€‚
+	 * @param M é€£ä¼‘ã®æ—¥æ•°
+	 * @param Nã€€æ—…è¡Œã®æ—¥æ•°
 	 */
 	public void checkInputNum(int M ,int N) { 
 		
-		//1<=N<=M<=30‚Å‚ ‚é‚±‚ÆB
+		//1<=N<=M<=30ã§ã‚ã‚‹ã“ã¨ã€‚
 		if (1 <= N && N <= 30 && 1 <= M && M <= 30 ) {
 			if (!(N <= M)) {
-				System.out.println("—·s‚Ì“ú”‚Í˜A‹x‚Ì“ú”‚æ‚è¬‚³‚¢’l‚ğw’è‚µ‚Ä‚­‚¾‚³‚¢BB");
+				System.out.println("æ—…è¡Œã®æ—¥æ•°ã¯é€£ä¼‘ã®æ—¥æ•°ã‚ˆã‚Šå°ã•ã„å€¤ã‚’æŒ‡å®šã—ã¦ãã ã•ã„ã€‚ã€‚");
 				System.exit(1);
 			}
 		} else {
-			System.out.println("˜A‹x‚Ì“ú”‚Æ—·s‚Ì“ú”‚Í30ˆÈ‰º‚Ì”’l‚ğw’è‚µ‚Ä‚­‚¾‚³‚¢B");
+			System.out.println("é€£ä¼‘ã®æ—¥æ•°ã¨æ—…è¡Œã®æ—¥æ•°ã¯30ä»¥ä¸‹ã®æ•°å€¤ã‚’æŒ‡å®šã—ã¦ãã ã•ã„ã€‚");
 			System.exit(1);
 		}
 	}
 	
 	/*
-	 * ˜A‹x‚Ì“ú•t‚Æ~…Šm—¦‚Ì“ü—Íˆ—‚ğs‚¢‚Ü‚·B
-	 * @param M ˜A‹x‚Ì“ú”
-	 * @param N@—·s‚Ì“ú”
+	 * é€£ä¼‘ã®æ—¥ä»˜ã¨é™æ°´ç¢ºç‡ã®å…¥åŠ›å‡¦ç†ã‚’è¡Œã„ã¾ã™ã€‚
+	 * @param M é€£ä¼‘ã®æ—¥æ•°
+	 * @param Nã€€æ—…è¡Œã®æ—¥æ•°
 	 */
 	public void setRainfallProbability (int M ,int N ) {
-		/**“ü—Í’l‚ğˆê“I‚ÉŠi”[**/
+		/**å…¥åŠ›å€¤ã‚’ä¸€æ™‚çš„ã«æ ¼ç´**/
 		String[] s = null;
 		ts.consecutiveHolidays = new int[M];
 		ts.rainfallProbability = new int[M];
 			
-		//”¼ŠpƒXƒy[ƒX‹æØ‚è‚Å˜A‹x‚Ì“ú•t‚Æ~…Šm—¦‚ğA‚»‚ê‚¼‚ê‚Ì”z—ñ‚Éæ“¾
+		//åŠè§’ã‚¹ãƒšãƒ¼ã‚¹åŒºåˆ‡ã‚Šã§é€£ä¼‘ã®æ—¥ä»˜ã¨é™æ°´ç¢ºç‡ã‚’ã€ãã‚Œãã‚Œã®é…åˆ—ã«å–å¾—
 		for (int i = 0 ; i < M ; i++) {
 			String str = ts.sc.nextLine();
 			s = str.split(" ");
@@ -107,9 +108,9 @@ public class travel_schedule {
 	}
 	
 	/*
-	 * ˜A‹x‚Ì“ú•t‚Æ~…Šm—¦‚Ì“ü—Í’lƒ`ƒFƒbƒNBƒGƒ‰[‚Ìê‡‚Íˆ—I—¹B
-	 * @param ch ˜A‹x‚Ì“ú•t
-	 * @param rp@~…Šm—¦
+	 * é€£ä¼‘ã®æ—¥ä»˜ã¨é™æ°´ç¢ºç‡ã®å…¥åŠ›å€¤ãƒã‚§ãƒƒã‚¯ã€‚ã‚¨ãƒ©ãƒ¼ã®å ´åˆã¯å‡¦ç†çµ‚äº†ã€‚
+	 * @param ch é€£ä¼‘ã®æ—¥ä»˜
+	 * @param rpã€€é™æ°´ç¢ºç‡
 	 */
 	public void checkRainfallProbability(int[] ch , int[] rp) {
 		boolean errorFlag = true;
@@ -119,7 +120,7 @@ public class travel_schedule {
 		}
 		
 		if (errorFlag == false) {
-			System.out.println("˜A‹x‚Ì“ú•t‚ª•s³‚Å‚·B1ˆÈã30ˆÈ‰º‚Ì’l‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B");
+			System.out.println("é€£ä¼‘ã®æ—¥ä»˜ãŒä¸æ­£ã§ã™ã€‚1ä»¥ä¸Š30ä»¥ä¸‹ã®å€¤ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚");
 			System.exit(1);
 		}
 		
@@ -128,38 +129,30 @@ public class travel_schedule {
 		}
 		
 		if (errorFlag == false) {
-			System.out.println("~…Šm—¦‚Ì’l‚ª•s³‚Å‚·B1ˆÈã100ˆÈ‰º‚Ì’l‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B");
+			System.out.println("é™æ°´ç¢ºç‡ã®å€¤ãŒä¸æ­£ã§ã™ã€‚1ä»¥ä¸Š100ä»¥ä¸‹ã®å€¤ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚");
 			System.exit(1);
 		}
 	}
 	
 	/*
-	 * —·sŠúŠÔ’†‚É~…Šm—¦‚ªÅ‚à’á‚­‚È‚éŠúŠÔ‚ğŒvZAo—Í‚·‚éB
+	 * æ—…è¡ŒæœŸé–“ä¸­ã«é™æ°´ç¢ºç‡ãŒæœ€ã‚‚ä½ããªã‚‹æœŸé–“ã‚’è¨ˆç®—ã€å‡ºåŠ›ã™ã‚‹ã€‚
 	 * 
-	 * @param M ˜A‹x‚Ì“ú”
-	 * @param N@—·s‚Ì“ú”
-	 * @param ch ˜A‹x‚Ì“ú•t
-	 * @param rp@~…Šm—¦
-	 * @return startDate + " " + endDate ~…Šm—¦‚ªÅ‚à’á‚­‚È‚éA—·s‚ÌŠJnEI—¹“ú
+	 * @param M é€£ä¼‘ã®æ—¥æ•°
+	 * @param Nã€€æ—…è¡Œã®æ—¥æ•°
+	 * @param ch é€£ä¼‘ã®æ—¥ä»˜
+	 * @param rpã€€é™æ°´ç¢ºç‡
+	 * @return startDate + " " + endDate é™æ°´ç¢ºç‡ãŒæœ€ã‚‚ä½ããªã‚‹ã€æ—…è¡Œã®é–‹å§‹ãƒ»çµ‚äº†æ—¥
 	 */
 	String getTravelDays(int M ,int N ,int[] ch, int[] rp) {
-		//o‚©‚çM-1‚Ü‚Å‚Ì•½‹Ï‚ğ‚Æ‚é
-		//1‚©‚çM‚Ü‚Å‚Ì•½‹Ï‚ğ‚Æ‚é
-		//”äŠr‚·‚éB
-		//’á‚¢‚Ù‚¤‚ğc‚·B
-		//2‚©‚çM+1‚Ü‚Å‚Ì•½‹Ï‚ğ‚Æ‚é
-		//”äŠr‚·‚éB
-		//’á‚¢‚Ù‚¤‚ğc‚·B
-		//3‚©‚çM+2‚Ü‚Å‚Ì•½‹Ï‚ğ‚Æ‚é
 		
 		int bestRainfallProbability = 0;
 		
-		//˜A‹x‰“ú‚©‚ç—·s‚µ‚½ê‡‚Ì~…Šm—¦‚Ì•½‹Ï‚ğæ“¾‚·‚éB
+		//é€£ä¼‘åˆæ—¥ã‹ã‚‰æ—…è¡Œã—ãŸå ´åˆã®é™æ°´ç¢ºç‡ã®å¹³å‡ã‚’å–å¾—ã™ã‚‹ã€‚
 		bestRainfallProbability = getAverage(0,N-1,rp);
 		int startDate = ch[0];
 		int endDate = ch[N-1];
 		
-		//˜A‹x2“ú–ÚˆÈ~‚Ì~…Šm—¦‚Ì•½‹Ï‚Æ”äŠr‚µ‚Ä‚¢‚­B
+		//é€£ä¼‘2æ—¥ç›®ä»¥é™ã®é™æ°´ç¢ºç‡ã®å¹³å‡ã¨æ¯”è¼ƒã—ã¦ã„ãã€‚
 		for (int i = 1 ; i < (M-N) ; i++) {
 			int ave = getAverage(i,i+N-1,rp);
 		
@@ -172,11 +165,11 @@ public class travel_schedule {
 	}
 	
 	/*
-	 * intŒ^”z—ñ‚Ì—v‘f”Ô†a‚©‚çb‚Ü‚Å‚Ì•½‹Ï‚ğŒvZ‚·‚éB
-	 * @param a ˆ—n‚ß‚Ì—v‘f”Ô†
-	 * @param b ˆ—I‚í‚è‚Ì—v‘f”Ô†
-	 * @param list[] ~…Šm—¦‚ÌƒŠƒXƒg
- 	 * @return total/(b-a+1) intŒ^”z—ñ‚Ì—v‘f”Ô†a‚©‚çb‚Ü‚Å‚Ì•½‹Ï
+	 * intå‹é…åˆ—ã®è¦ç´ ç•ªå·aã‹ã‚‰bã¾ã§ã®å¹³å‡ã‚’è¨ˆç®—ã™ã‚‹ã€‚
+	 * @param a å‡¦ç†å§‹ã‚ã®è¦ç´ ç•ªå·
+	 * @param b å‡¦ç†çµ‚ã‚ã‚Šã®è¦ç´ ç•ªå·
+	 * @param list[] é™æ°´ç¢ºç‡ã®ãƒªã‚¹ãƒˆ
+ 	 * @return total/(b-a+1) intå‹é…åˆ—ã®è¦ç´ ç•ªå·aã‹ã‚‰bã¾ã§ã®å¹³å‡
 	 */
 	int getAverage(int a , int b ,int[] list) {
 		int total = 0; 
