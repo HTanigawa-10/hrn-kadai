@@ -30,7 +30,6 @@ public class countUpButtom extends Frame {
 	}
 	
 	public void execute(){
-		
 		//ウィンドウの設定
 		JFrame jFrame = new JFrame();
 		jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
