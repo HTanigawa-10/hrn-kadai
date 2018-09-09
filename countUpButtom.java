@@ -15,13 +15,13 @@ import javax.swing.JPanel;
 
 public class countUpButtom extends Frame {
 	
-	/** ƒJƒEƒ“ƒg  */
+	/** ã‚«ã‚¦ãƒ³ãƒˆ  */
 	int count = 0;
-	/** ƒJƒEƒ“ƒgƒAƒbƒv  */
+	/** ã‚«ã‚¦ãƒ³ãƒˆã‚¢ãƒƒãƒ—  */
 	private JButton countButton;
-	/** ƒJƒEƒ“ƒgƒŠƒZƒbƒg  */
+	/** ã‚«ã‚¦ãƒ³ãƒˆãƒªã‚»ãƒƒãƒˆ  */
 	private JButton resetButton;
-	/** ƒJƒEƒ“ƒg•\¦  */
+	/** ã‚«ã‚¦ãƒ³ãƒˆè¡¨ç¤º  */
 	private JLabel label;
 	
 	public static void main(String ars[]) {
@@ -30,51 +30,51 @@ public class countUpButtom extends Frame {
 	}
 	
 	public void execute(){
-		//ƒEƒBƒ“ƒhƒE‚Ìİ’è
+		//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®è¨­å®š
 		JFrame jFrame = new JFrame();
 		jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jFrame.setSize(400,300);
 		jFrame.setLocationRelativeTo(null);
 		
-		//ƒ{ƒ^ƒ“‚Ìİ’è
-		countButton = new JButton("ƒJƒEƒ“ƒgƒAƒbƒv");
-		resetButton = new JButton("ƒŠƒZƒbƒg");
-		//ƒTƒCƒY‚ğw’è
+		//ãƒœã‚¿ãƒ³ã®è¨­å®š
+		countButton = new JButton("ã‚«ã‚¦ãƒ³ãƒˆã‚¢ãƒƒãƒ—");
+		resetButton = new JButton("ãƒªã‚»ãƒƒãƒˆ");
+		//ã‚µã‚¤ã‚ºã‚’æŒ‡å®š
 		countButton.setPreferredSize(new Dimension(150,30));
 		resetButton.setPreferredSize(new Dimension(150,30));
-		//ƒ{ƒ^ƒ“—p‚Ìƒpƒlƒ‹‚É…•½”z’u
-	    JPanel buttonPanel = new JPanel();
-	    buttonPanel.setLayout(new FlowLayout());
-	    buttonPanel.add(countButton);
-	    buttonPanel.add(resetButton);
+		//ãƒœã‚¿ãƒ³ç”¨ã®ãƒ‘ãƒãƒ«ã«æ°´å¹³é…ç½®
+		JPanel buttonPanel = new JPanel();
+	    	buttonPanel.setLayout(new FlowLayout());
+	    	buttonPanel.add(countButton);
+		buttonPanel.add(resetButton);
 		
-	    // ƒJƒEƒ“ƒgƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚Ìˆ—‚ğİ’è
+		// ã‚«ã‚¦ãƒ³ãƒˆãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ãŸæ™‚ã®å‡¦ç†ã‚’è¨­å®š
 		countButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				count++;
-				label.setText(count + "‰ñ" );
+				label.setText(count + "å›" );
 			}
 		});
-	    // ƒŠƒZƒbƒgƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚Ìˆ—‚ğİ’è
+	 	// ãƒªã‚»ãƒƒãƒˆãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ãŸæ™‚ã®å‡¦ç†ã‚’è¨­å®š
 		resetButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				count = 0;
-				label.setText(count + "‰ñ" );
+				label.setText(count + "å›" );
 			}
 		});
 		
-		//ƒ‰ƒxƒ‹‚Ìİ’è
-	    label = new JLabel(count + "‰ñ");
-		//ƒ‰ƒxƒ‹—p‚Ìƒpƒlƒ‹‚É”z’u
-	    JPanel labelPanel = new JPanel();
-	    labelPanel.add(label);
+		//ãƒ©ãƒ™ãƒ«ã®è¨­å®š
+		label = new JLabel(count + "å›");
+		//ãƒ©ãƒ™ãƒ«ç”¨ã®ãƒ‘ãƒãƒ«ã«é…ç½®
+		JPanel labelPanel = new JPanel();
+		labelPanel.add(label);
 		
-		//ƒ{ƒ^ƒ“Eƒ‰ƒxƒ‹‚ğ”z’u‚µ‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ”z’u‚·‚éƒRƒ“ƒeƒi‚ğ¶¬EBorderLayout‚Å”z’u
+		//ãƒœã‚¿ãƒ³ãƒ»ãƒ©ãƒ™ãƒ«ã‚’é…ç½®ã—ãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’é…ç½®ã™ã‚‹ã‚³ãƒ³ãƒ†ãƒŠã‚’ç”Ÿæˆãƒ»BorderLayoutã§é…ç½®
 		Container Container = jFrame.getContentPane();
 		Container.add(buttonPanel, BorderLayout.NORTH);
 		Container.add(labelPanel, BorderLayout.CENTER);
 		
-		//‰Â‹‰»
+		//å¯è¦–åŒ–
 		jFrame.setVisible(true);
 	}
 }
