@@ -43,19 +43,19 @@ public class countUpButtom extends Frame {
 		countButton.setPreferredSize(new Dimension(150,30));
 		resetButton.setPreferredSize(new Dimension(150,30));
 		//ボタン用のパネルに水平配置
-		JPanel buttonPanel = new JPanel();
-	    	buttonPanel.setLayout(new FlowLayout());
-	    	buttonPanel.add(countButton);
-		buttonPanel.add(resetButton);
+	    JPanel buttonPanel = new JPanel();
+	    buttonPanel.setLayout(new FlowLayout());
+	    buttonPanel.add(countButton);
+	    buttonPanel.add(resetButton);
 		
-		// カウントボタンを押した時の処理を設定
+	    // カウントボタンを押した時の処理を設定
 		countButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				count++;
 				label.setText(count + "回" );
 			}
 		});
-	 	// リセットボタンを押した時の処理を設定
+	    // リセットボタンを押した時の処理を設定
 		resetButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				count = 0;
@@ -64,15 +64,17 @@ public class countUpButtom extends Frame {
 		});
 		
 		//ラベルの設定
-		label = new JLabel(count + "回");
+	    label = new JLabel(count + "回");
+	    label.setHorizontalAlignment(JLabel.CENTER);
 		//ラベル用のパネルに配置
-		JPanel labelPanel = new JPanel();
-		labelPanel.add(label);
+	    //JPanel labelPanel = new JPanel();
+	    //labelPanel.add(label,BorderLayout.CENTER);
 		
 		//ボタン・ラベルを配置したコンポーネントを配置するコンテナを生成・BorderLayoutで配置
 		Container Container = jFrame.getContentPane();
 		Container.add(buttonPanel, BorderLayout.NORTH);
-		Container.add(labelPanel, BorderLayout.CENTER);
+		//Container.add(labelPanel, BorderLayout.CENTER);
+		Container.add(label);
 		
 		//可視化
 		jFrame.setVisible(true);
