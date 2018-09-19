@@ -1,57 +1,55 @@
 package kadai_09;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class PointCard {
-	/** ƒŒƒV[ƒg‚Ì–‡” */
+	/** ãƒ¬ã‚·ãƒ¼ãƒˆã®æšæ•° */
 	private int N = 0;
-	/** key:“ú•t ,value:w“ü‹àŠz */
+	/** key:æ—¥ä»˜ ,value:è³¼å…¥é‡‘é¡ */
 	private HashMap<Integer,Integer> map = new HashMap<Integer,Integer>();
-	/** ‡Œvw“ü‹àŠz */
+	/** åˆè¨ˆè³¼å…¥é‡‘é¡ */
 	private int m = 0;
-	/** ‡Œvƒ|ƒCƒ“ƒg */
+	/** åˆè¨ˆãƒã‚¤ãƒ³ãƒˆ */
 	private int s = 0;
 	
 	/**
-	 * •W€“ü—Í‚Åˆø”‚ğó‚¯æ‚èAma‚‚ÉŠi”[‚µ‚Ü‚·B
-	 * @param receipts ˆø”‚ÌƒŒƒV[ƒgî•ñ
+	 * æ¨™æº–å…¥åŠ›ã§å¼•æ•°ã‚’å—ã‘å–ã‚Šã€maï½ã«æ ¼ç´ã—ã¾ã™ã€‚
+	 * @param receipts å¼•æ•°ã®ãƒ¬ã‚·ãƒ¼ãƒˆæƒ…å ±
 	 */
 	public void inputArgs(String[] receipts){
 		Scanner sc = null;
 		boolean errFlag = false;
 		try {
-			System.out.println("----------“ü—ÍŠJn----------");
-			//•W€“ü—Í
+			System.out.println("----------å…¥åŠ›é–‹å§‹----------");
 			sc = new Scanner(System.in);
-			//ƒŒƒV[ƒg–‡”‚Ìæ“¾
+			//ãƒ¬ã‚·ãƒ¼ãƒˆæšæ•°ã®å–å¾—
 			N = Integer.parseInt(sc.nextLine());
-			//ƒŒƒV[ƒg”‚ª0ˆÈ‰º‚Ìê‡‚Íˆ—I—¹
+			//ãƒ¬ã‚·ãƒ¼ãƒˆæ•°ãŒ0ä»¥ä¸‹ã®å ´åˆã¯å‡¦ç†çµ‚äº†
 			if(N <= 0) {
-				System.out.println("ƒŒƒV[ƒg‚Ì”‚ª•s³‚Å‚·B");
+				System.out.println("ãƒ¬ã‚·ãƒ¼ãƒˆã®æ•°ãŒä¸æ­£ã§ã™ã€‚");
 				System.exit(0);
 			}
-			//key:“ú•t ,value:w“ü‹àŠz‚ğæ“¾A”ÍˆÍƒ`ƒFƒbƒN‚ğs‚¤
+			//key:æ—¥ä»˜ ,value:è³¼å…¥é‡‘é¡ã‚’å–å¾—ã€ç¯„å›²ãƒã‚§ãƒƒã‚¯ã‚’è¡Œã†
 			for (int i = 0; i < N; i++) {
-	            String s = sc.nextLine();
-	            String[] array = s.split(" ");
+	          		String s = sc.nextLine();
+	        		String[] array = s.split(" ");
 	            
-				//“ü—Í’lƒ`ƒFƒbƒN
+				//å…¥åŠ›å€¤ãƒã‚§ãƒƒã‚¯
 				checkArgs(N ,Integer.parseInt(array[0]), Integer.parseInt(array[1]));
 	            
-	            //key:“ú•t ,value:w“ü‹àŠz‚Æ‚µ‚Äæ“¾‚·‚éB‚·‚Å‚É“ú•tƒL[‚ª‘¶İ‚µ‚½ê‡‚ÍAw“ü‹àŠz‚ğ‰ÁZ‚·‚éB
-	            if(map.containsKey(Integer.valueOf(array[0]))) {
-	            	map.put(Integer.valueOf(array[0]), Integer.valueOf(map.get(array[0]) + array[1]));
-	            } else {
-		            map.put(Integer.valueOf(array[0]), Integer.valueOf(array[1]));
-	            }
+	           	//key:æ—¥ä»˜ ,value:è³¼å…¥é‡‘é¡ã¨ã—ã¦å–å¾—ã™ã‚‹ã€‚ã™ã§ã«æ—¥ä»˜ã‚­ãƒ¼ãŒå­˜åœ¨ã—ãŸå ´åˆã¯ã€è³¼å…¥é‡‘é¡ã‚’åŠ ç®—ã™ã‚‹ã€‚
+	            		if(map.containsKey(Integer.valueOf(array[0]))) {
+	            			map.put(Integer.valueOf(array[0]), Integer.valueOf(map.get(array[0]) + array[1]));
+	            		} else {
+		        		map.put(Integer.valueOf(array[0]), Integer.valueOf(array[1]));
+	            		}
 			}
-			System.out.println("----------“ü—ÍI—¹----------");
+			System.out.println("----------å…¥åŠ›çµ‚äº†----------");
 		} catch(Exception e) {
-			//‚»‚Ì‘¼—áŠO
+			//ãã®ä»–ä¾‹å¤–
 			e.printStackTrace();
-			System.out.println("ˆø”‚ÌŒ`®‚ª•s³‚Å‚·B");
+			System.out.println("å¼•æ•°ã®å½¢å¼ãŒä¸æ­£ã§ã™ã€‚");
 			errFlag = true;
 		} finally {
 			if(sc != null) {sc.close();};
@@ -60,35 +58,35 @@ public class PointCard {
 	}
 	
 	/**
-	 * “ü—Í’l‚Ì”ÍˆÍƒ`ƒFƒbƒN‚ğs‚¢‚Ü‚·BƒGƒ‰[”­¶‚Íˆ—‚ğI—¹‚µ‚Ü‚·B
+	 * å…¥åŠ›å€¤ã®ç¯„å›²ãƒã‚§ãƒƒã‚¯ã‚’è¡Œã„ã¾ã™ã€‚ã‚¨ãƒ©ãƒ¼ç™ºç”Ÿæ™‚ã¯å‡¦ç†ã‚’çµ‚äº†ã—ã¾ã™ã€‚
 	 * 
 	 */
 	public void checkArgs(int N,int day ,int price) {
 		String errMsg = null; 
 		
-		//ƒŒƒV[ƒg‚Ì”@1`100
+		//ãƒ¬ã‚·ãƒ¼ãƒˆã®æ•°ã€€1ï½100
 		if (!(1 <= N && N <= 100)) {
-			errMsg = "ƒŒƒV[ƒg‚Ì”‚ª•s³‚Å‚·B";
+			errMsg = "ãƒ¬ã‚·ãƒ¼ãƒˆã®æ•°ãŒä¸æ­£ã§ã™ã€‚";
 		}
-		//ƒŒƒV[ƒg‚Ì”­s“ú•t 1`31
+		//ãƒ¬ã‚·ãƒ¼ãƒˆã®ç™ºè¡Œæ—¥ä»˜ 1ï½31
 		if (!(1 <= day && day <= 31)) {
-			errMsg = "ƒŒƒV[ƒg‚Ì”­s“ú•t‚ª•s³‚Å‚·B"; 
+			errMsg = "ãƒ¬ã‚·ãƒ¼ãƒˆã®ç™ºè¡Œæ—¥ä»˜ãŒä¸æ­£ã§ã™ã€‚"; 
 		}
-		//‚»‚Ì“ú•t‚ÌƒŒƒV[ƒg‚Ìw“ü‹àŠz@1`10000
+		//ãã®æ—¥ä»˜ã®ãƒ¬ã‚·ãƒ¼ãƒˆã®è³¼å…¥é‡‘é¡ã€€1ï½10000
 		if (!(1 <= price && price <= 10000)) {
-			errMsg = "w“ü‹àŠz‚ª•s³‚Å‚·B"; 
+			errMsg = "è³¼å…¥é‡‘é¡ãŒä¸æ­£ã§ã™ã€‚"; 
 		}
-		//ƒGƒ‰[ƒƒbƒZ[ƒW‚Ì•\¦
+		//ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®è¡¨ç¤º
 		if (errMsg != null) {
 			System.out.println(errMsg);
 			System.exit(0);
 		}
 	}
 	
-	/** ƒƒCƒ“ˆ—‚ğs‚¢‚Ü‚·B*/
+	/** ãƒ¡ã‚¤ãƒ³å‡¦ç†ã‚’è¡Œã„ã¾ã™ã€‚*/
 	public void execute() {
 		for (Map.Entry<Integer, Integer> map : map.entrySet()) {
-			/** ƒ|ƒCƒ“ƒgŒW”@*/
+			/** ãƒã‚¤ãƒ³ãƒˆä¿‚æ•°ã€€*/
 			double dayPint = 0.01;
 			double three_dayPint = 0.03;
 			double five_dayPint = 0.05; 
@@ -96,39 +94,40 @@ public class PointCard {
 			String day_s = map.getKey().toString();
 			int price = map.getValue().intValue();
 			
-			//5‚Ì•t‚­“ú‚Æ3‚Ì•t‚­“ú‚Í‚»‚ê‚¼‚ê‚Ìƒ|ƒCƒ“ƒgŒW”‚ğİ’è
+			//5ã®ä»˜ãæ—¥ã¨3ã®ä»˜ãæ—¥ã¯ãã‚Œãã‚Œã®ãƒã‚¤ãƒ³ãƒˆä¿‚æ•°ã‚’è¨­å®š
 			if (day_s.contains("5")) {
 				dayPint = five_dayPint;
 			} else if (day_s.contains("3")) {
 				dayPint = three_dayPint;
 			}
-			//w“ü‹àŠz‚Æƒ|ƒCƒ“ƒg‚ğ‰ÁZ
+			//è³¼å…¥é‡‘é¡ã¨ãƒã‚¤ãƒ³ãƒˆã‚’åŠ ç®—
 			m += price;
 			s += price * dayPint ;
 		}
 	}
-	/** Œ‹‰Ê‚ğo—Í‚µ‚Ü‚·B*/
+	
+	/** çµæœã‚’å‡ºåŠ›ã—ã¾ã™ã€‚*/
 	public void println() {
-		System.out.println("----------o—ÍŠJn----------");
-		System.out.println(m + "‰~");
-		System.out.println(s + "ƒ|ƒCƒ“ƒg");
-		System.out.println("----------o—ÍI—¹----------");
+		System.out.println("----------å‡ºåŠ›é–‹å§‹----------");
+		System.out.println(m + "å††");
+		System.out.println(s + "ãƒã‚¤ãƒ³ãƒˆ");
+		System.out.println("----------å‡ºåŠ›çµ‚äº†----------");
 	}
 	
 	/**
-	 * ƒƒCƒ“ˆ—‚ğs‚¢‚Ü‚·B
+	 * ãƒ¡ã‚¤ãƒ³ãƒ¡ã‚½ãƒƒãƒ‰
 	 * @param args
 	 */
 	public static void main (String[] args) {
 		PointCard pointcard = new PointCard();
 		
-		//•W€“ü—Í‚ğs‚¤B“ü—Í’l‚ğmap‚É‘ã“ü‚µ‚Ä‚¢‚­B
+		//æ¨™æº–å…¥åŠ›ã‚’è¡Œã†ã€‚å…¥åŠ›å€¤ã‚’mapã«ä»£å…¥ã—ã¦ã„ãã€‚
 		pointcard.inputArgs(args);
 		
-		//‡Œv‹àŠz‚Æƒ|ƒCƒ“ƒg‚ÌŒvZ‚ğs‚¤ƒƒCƒ“ˆ—
+		//åˆè¨ˆé‡‘é¡ã¨ãƒã‚¤ãƒ³ãƒˆã®è¨ˆç®—ã‚’è¡Œã†ãƒ¡ã‚¤ãƒ³å‡¦ç†
 		pointcard.execute();
 		
-		//Œ‹‰Ê‚ğ•\¦‚·‚éo—Íˆ—
+		//çµæœã‚’è¡¨ç¤ºã™ã‚‹å‡ºåŠ›å‡¦ç†
 		pointcard.println();
 	}
 }
