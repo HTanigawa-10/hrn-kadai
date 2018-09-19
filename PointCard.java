@@ -26,7 +26,7 @@ public class PointCard {
 			//レシート枚数の取得
 			N = Integer.parseInt(sc.nextLine());
 			//レシート数が0以下の場合は処理終了
-			if(N <= 0) {
+			if (N <= 0) {
 				System.out.println("レシートの数が不正です。");
 				System.exit(0);
 			}
@@ -39,7 +39,7 @@ public class PointCard {
 				checkArgs(N ,Integer.parseInt(array[0]), Integer.parseInt(array[1]));
 	            
 	           		//key:日付 ,value:購入金額として取得する。すでに日付キーが存在した場合は、購入金額を加算する。
-	            		if(map.containsKey(Integer.valueOf(array[0]))) {
+	            		if (map.containsKey(Integer.valueOf(array[0]))) {
 	            			map.put(Integer.valueOf(array[0]), Integer.valueOf(map.get(array[0]) + array[1]));
 	            		} else {
 		        		map.put(Integer.valueOf(array[0]), Integer.valueOf(array[1]));
