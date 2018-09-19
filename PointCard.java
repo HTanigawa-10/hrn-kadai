@@ -14,7 +14,7 @@ public class PointCard {
 	private int s = 0;
 	
 	/**
-	 * 標準入力で引数を受け取り、maｐに格納します。
+	 * 標準入力で引数を受け取り、mapに格納します。
 	 * @param receipts 引数のレシート情報
 	 */
 	public void inputArgs(String[] receipts){
