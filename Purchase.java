@@ -25,7 +25,7 @@ public class Purchase {
 		
 		//引数で指定したXMLファイルを読み込み、Javaインスタンスを生成します。
 		InputStream is = new FileInputStream(fileName);
-		Items　items = JAXB.unmarshal(is, Items.class);
+		Items items = JAXB.unmarshal(is, Items.class);
 		//生成したインスタンスから、購入時間と購入商品リストを取得します。
 		String purchaseTime = items.getPurchaseTime();
 		List<Item> itemList = items.getItems();
