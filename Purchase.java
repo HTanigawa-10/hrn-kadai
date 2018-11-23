@@ -14,64 +14,64 @@ import javax.xml.bind.JAXB;
 public class Purchase {
 	
 	public static void main(String[] args) throws Exception{
-		/** w“ü¤•iƒŠƒXƒg */
+		/** è³¼å…¥å•†å“ãƒªã‚¹ãƒˆ */
 		Items items = null;
-		/** “ü—Íƒtƒ@ƒCƒ‹ƒpƒX */
+		/** å…¥åŠ›ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹ */
 		String fileName = args[0];
-		/** id•ÊWŒvŒ‹‰Ê@‹àŠz*/
+		/** idåˆ¥é›†è¨ˆçµæœã€€é‡‘é¡*/
 		Map<String, Integer> priceMap = new LinkedHashMap<>();
-		/** id•ÊWŒvŒ‹‰Ê@¤•i–¼*/
+		/** idåˆ¥é›†è¨ˆçµæœã€€å•†å“å*/
 		Map<String, String> nameMap = new LinkedHashMap<>();
-		/** id•ÊWŒvŒ‹‰Ê@w“üŒÂ”*/
+		/** idåˆ¥é›†è¨ˆçµæœã€€è³¼å…¥å€‹æ•°*/
 		Map<String, Integer> countMap = new LinkedHashMap<>();
 		
-		//ˆø”‚Åw’è‚µ‚½XMLƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚İAJavaƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚µ‚Ü‚·B
+		//å¼•æ•°ã§æŒ‡å®šã—ãŸXMLãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã¿ã€Javaã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
 		InputStream is = new FileInputStream(fileName);
 		items = JAXB.unmarshal(is, Items.class);
-		//¶¬‚µ‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚©‚çAw“üŠÔ‚Æw“ü¤•iƒŠƒXƒg‚ğæ“¾‚µ‚Ü‚·B
+		//ç”Ÿæˆã—ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‹ã‚‰ã€è³¼å…¥æ™‚é–“ã¨è³¼å…¥å•†å“ãƒªã‚¹ãƒˆã‚’å–å¾—ã—ã¾ã™ã€‚
 		String purchaseTime = items.getPurchaseTime();
 		List<Item> itemList = items.getItems();
-		//w“ü¤•iƒŠƒXƒg ‚ğitemId‚Å¸‡‚Éƒ\[ƒg‚µ‚Ü‚·B
+		//è³¼å…¥å•†å“ãƒªã‚¹ãƒˆ ã‚’itemIdã§æ˜‡é †ã«ã‚½ãƒ¼ãƒˆã—ã¾ã™ã€‚
 		itemList.sort(Comparator.comparing(Item::getItemId, Comparator.nullsLast(Comparator.naturalOrder())));
 		
-		//itemId‚ğkey‚Æ‚µ‚ÄA‹àŠzE¤•i–¼Ew“üŒÂ”‚ğ‚»‚ê‚¼‚ê‚Ìmap‚ÉŠi”[‚µ‚Ü‚·B
+		//itemIdã‚’keyã¨ã—ã¦ã€é‡‘é¡ãƒ»å•†å“åãƒ»è³¼å…¥å€‹æ•°ã‚’ãã‚Œãã‚Œã®mapã«æ ¼ç´ã—ã¾ã™ã€‚
 		for (int i = 0 ; i < itemList.size() ; i++) {
 			Item item = itemList.get(i);
 			String itemId = item.getItemId();
 			int price = item.getPrice();
-			//map‚É“¯‚¶itemId‚ª‘¶İ‚µ‚È‚¢ê‡
+			//mapã«åŒã˜itemIdãŒå­˜åœ¨ã—ãªã„å ´åˆ
 			if (!priceMap.containsKey(itemId)) {
-				//‹àŠzE¤•i–¼Ew“üŒÂ”‚ğmap‚ÉV‹K’Ç‰Á‚µ‚Ü‚·B
+				//é‡‘é¡ãƒ»å•†å“åãƒ»è³¼å…¥å€‹æ•°ã‚’mapã«æ–°è¦è¿½åŠ ã—ã¾ã™ã€‚
 				String itemName = item.getItemName();
 				nameMap.put(itemId, itemName);
 				priceMap.put(itemId, price);
 				countMap.put(itemId, 1);
-			//map‚É“¯‚¶itemId‚ª‘¶İ‚·‚éê‡
+			//mapã«åŒã˜itemIdãŒå­˜åœ¨ã™ã‚‹å ´åˆ
 			} else {
-				//Price‚Æw“üŒÂ”‚ğ‰ÁZ‚µ‚Ü‚·B
+				//é‡‘é¡ã¨è³¼å…¥å€‹æ•°ã‚’åŠ ç®—ã—ã¾ã™ã€‚
 				priceMap.put(itemId, new Integer(priceMap.get(itemId) + price));
 				countMap.put(itemId, countMap.get(itemId) + 1);
 			}
 		}
 		
-		//‡Œv‹àŠz‚ğŒvZ‚µ‚Ü‚·B
+		//åˆè¨ˆé‡‘é¡ã‚’è¨ˆç®—ã—ã¾ã™ã€‚
 		int total = 0;
 		for (String key : priceMap.keySet()) {
 			total += priceMap.get(key);
 		}
 		
-		//“ú•t‚ÌŒ`®‚ğ•ÏŠ·‚µ‚Ü‚·B
-		//yyyyMMddHHmmss ¨ yyyy”NMMŒdd“úHHmm•ªss•b
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-        Date date = sdf.parse(purchaseTime);
-        sdf.applyPattern("yyyy”NMMŒdd“úHHmm•ªss•b");
-        purchaseTime = sdf.format(date);
+		//æ—¥ä»˜ã®å½¢å¼ã‚’å¤‰æ›ã—ã¾ã™ã€‚
+		//yyyyMMddHHmmss â†’ yyyyå¹´MMæœˆddæ—¥HHæŒmmåˆ†ssç§’
+        	SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+        	Date date = sdf.parse(purchaseTime);
+      		sdf.applyPattern("yyyyå¹´MMæœˆddæ—¥HHæŒmmåˆ†ssç§’");
+        	purchaseTime = sdf.format(date);
 		
-		//Œ‹‰Ê‚ğo—Í‚µ‚Ü‚·B
-		System.out.println("w“üŠÔF" + purchaseTime);
+		//çµæœã‚’å‡ºåŠ›ã—ã¾ã™ã€‚
+		System.out.println("è³¼å…¥æ™‚é–“ï¼š" + purchaseTime);
 		for (String key : priceMap.keySet()) {
-			System.out.println("¤•i–¼F" + nameMap.get(key) + "@w“üŒÂ”F" + countMap.get(key));
+			System.out.println("å•†å“åï¼š" + nameMap.get(key) + "ã€€è³¼å…¥å€‹æ•°ï¼š" + countMap.get(key));
 		}
-		System.out.println("‡Œv‹àŠzF" + total + "‰~");
+		System.out.println("åˆè¨ˆé‡‘é¡ï¼š" + total + "å††");
 	}
 }
