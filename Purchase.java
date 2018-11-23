@@ -14,8 +14,6 @@ import javax.xml.bind.JAXB;
 public class Purchase {
 	
 	public static void main(String[] args) throws Exception{
-		/** 購入商品リスト */
-		Items items = null;
 		/** 入力ファイルパス */
 		String fileName = args[0];
 		/** id別集計結果　金額*/
@@ -27,11 +25,11 @@ public class Purchase {
 		
 		//引数で指定したXMLファイルを読み込み、Javaインスタンスを生成します。
 		InputStream is = new FileInputStream(fileName);
-		items = JAXB.unmarshal(is, Items.class);
+		Items　items = JAXB.unmarshal(is, Items.class);
 		//生成したインスタンスから、購入時間と購入商品リストを取得します。
 		String purchaseTime = items.getPurchaseTime();
 		List<Item> itemList = items.getItems();
-		//購入商品リスト をitemIdで昇順にソートします。
+		//購入商品リストをitemIdで昇順にソートします。
 		itemList.sort(Comparator.comparing(Item::getItemId, Comparator.nullsLast(Comparator.naturalOrder())));
 		
 		//itemIdをkeyとして、金額・商品名・購入個数をそれぞれのmapに格納します。
