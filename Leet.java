@@ -32,7 +32,7 @@ public class Leet {
 	//leet変換結果を返します。
 	public static String leet(String strLine){
 		//文字数チェック
-		if (strLine.length() < 1  || 100 <= strLine.length()) 
+		if (strLine.length() < 1  || 100 < strLine.length()) 
 			throw new IllegalArgumentException("文字列は1～100字以内である必要があります。");
 		//変換結果
 		String leetStr = "";
