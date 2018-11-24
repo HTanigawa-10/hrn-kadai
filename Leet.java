@@ -5,16 +5,16 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Leet {
-	//leet�ϊ��Ή��t��map
+	//leet変換対応付けmap
 	static Map<String, String> leetMap = new HashMap<String, String>();
 
 	public static void main(String[] args) throws Exception{
 		
-		System.out.println("----------���͊J�n----------");
+		System.out.println("----------入力開始----------");
 		Scanner sc = new Scanner(System.in);
 		String line = sc.nextLine();
 		
-		//leet�ϊ��Ή��t����ǉ����܂��B
+		//leet変換対応付けを追加します。
 		addLeet("A", "4");
 		addLeet("E", "3");
 		addLeet("G", "6");
@@ -22,20 +22,27 @@ public class Leet {
 		addLeet("O", "0");
 		addLeet("S", "5");
 		addLeet("Z", "2");
-		//���ʂ��o�͂��܂��B
-		System.out.println("----------���͏I��----------");
+		//結果を出力します。
+		System.out.println("----------入力終了----------");
 		System.out.println(leet(line));
 		
 		sc.close();
 	}
 	
-	//leet�ϊ����ʂ�Ԃ��܂��B
+	//leet変換結果を返します。
 	public static String leet(String strLine){
-		//�ϊ�����
+		//文字数チェック
+		if (strLine.length() < 1  || 100 <= strLine.length()) 
+			throw new IllegalArgumentException("文字列は1～100字以内である必要があります。");
+		//変換結果
 		String leetStr = "";
-		//���͕���(1�����P��)��key�ƈ�v����ꍇ�́A�Ή�����value�ɕϊ����܂��B
+		//入力文字(1文字単位)がkeyと一致する場合は、対応するvalueに変換します。
 		for (int i = 0 ; i < strLine.length() ; i++) {
 			String Str = String.valueOf(strLine.charAt(i)); 
+			//アルファベット以外の場合はエラーとします。
+			if (!Str.matches("^[a-zA-Z]+$"))
+				throw new IllegalArgumentException("文字列はアルファベットである必要があります。：" + i + "文字目 = " + Str);
+			//keyと一致する場合は、対応するvalueに変換します。
 			if (leetMap.containsKey(Str)) {
 				Str = leetMap.get(Str);
 			}
@@ -44,7 +51,7 @@ public class Leet {
 		return leetStr;
 	}
 	
-	//leet�ϊ��̑Ή��t����ǉ����܂��B
+	//leet変換の対応付けを追加します。
 	public static void addLeet(String key, String value){
 		leetMap.put(key, value);
 	}
