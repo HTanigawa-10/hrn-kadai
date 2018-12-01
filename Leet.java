@@ -30,25 +30,25 @@ public class Leet {
 	}
 	
 	//leet変換結果を返します。
-	public static String leet(String strLine){
+	public static String leet(String beforeLeet){
 		//文字数チェック
-		if (strLine.length() < 1  || 100 < strLine.length()) 
+		if (beforeLeet.length() < 1  || 100 <= beforeLeet.length()) 
 			throw new IllegalArgumentException("文字列は1～100字以内である必要があります。");
 		//変換結果
-		String leetStr = "";
+		StringBuffer afterLeet = new StringBuffer();
 		//入力文字(1文字単位)がkeyと一致する場合は、対応するvalueに変換します。
-		for (int i = 0 ; i < strLine.length() ; i++) {
-			String Str = String.valueOf(strLine.charAt(i)); 
-			//アルファベット以外の場合はエラーとします。
-			if (!Str.matches("^[a-zA-Z]+$"))
-				throw new IllegalArgumentException("文字列はアルファベットである必要があります。：" + i + "文字目 = " + Str);
+		for (int i = 0 ; i < beforeLeet.length() ; i++) {
+			String Str = String.valueOf(beforeLeet.charAt(i)); 
+			//大文字アルファベット以外の場合はエラーとします。
+			if (!Str.matches("^[A-Z]+$"))
+				throw new IllegalArgumentException("文字列は大文字アルファベットである必要があります。：" + i + "文字目 = " + Str);
 			//keyと一致する場合は、対応するvalueに変換します。
 			if (leetMap.containsKey(Str)) {
 				Str = leetMap.get(Str);
 			}
-			leetStr += Str;
+			afterLeet.append(Str);
 		}
-		return leetStr;
+		return afterLeet.toString();
 	}
 	
 	//leet変換の対応付けを追加します。
