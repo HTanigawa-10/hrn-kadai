@@ -36,10 +36,12 @@ public class FileReadAndOutPut {
 		for ( int i = 0 ; i < files.length ; i++ ) { 
 			String fileName = files[i].getName();
 			
-			if ( !files[i].isDirectory() ) {
-				if ( fileName.endsWith(XML) )
-					xmlFileList.add( path + "/" + fileName );
-			}
+			// ディレクトリの場合は次のファイルへ
+			if ( files[i].isDirectory() ) continue;
+			// XMLファイルでない場合は次のファイルへ
+			if ( !fileName.endsWith(XML) ) continue;
+			
+			xmlFileList.add( path + "/" + fileName );
 		}
 		
 		//XMLファイルが存在しない場合は処理を終了します。
