@@ -21,7 +21,7 @@ public class FileReadAndOutPut {
 		/** ファイル一覧の中からXMLファイルのパスのみ抽出したリスト　*/
 		ArrayList<String> xmlFileList = null;
 		
-		//指定のディレクトリ配下にファイルが存在しない場合は処理を終了します。
+		//指定のパスがディレクトリであり、かつ配下にファイルが存在することを確認します。
 		if ( files == null ) {
 			System.out.println("指定のパスはディレクトリではありません。");
 			System.exit(1);
@@ -32,7 +32,7 @@ public class FileReadAndOutPut {
 		
 		xmlFileList = new ArrayList<String>();
 		
-		//ファイル一覧の中からXMLファイルのフルパスのみ取得します。
+		//ファイル一覧の中から、XMLファイルのフルパスのみ取得します。
 		for ( int i = 0 ; i < files.length ; i++ ) { 
 			String fileName = files[i].getName();
 			
@@ -48,7 +48,7 @@ public class FileReadAndOutPut {
 			System.exit(1);
 		}
 
-		//XMLファイルのファイル数分、処理を行います。
+		//XMLファイルのファイル数分、処理を繰り返し行います。
 		for ( int i = 0 ; i < xmlFileList.size() ; i++ ) {
 			ReceiptInfo recieptInfo = null;
 			
