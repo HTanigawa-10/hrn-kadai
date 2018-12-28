@@ -23,7 +23,7 @@ public class FileReadAndOutPut {
 		
 		//指定のパスがディレクトリであり、かつ配下にファイルが存在することを確認します。
 		if ( files == null ) {
-			System.out.println("指定のパスはディレクトリではありません。");
+			System.out.println("指定のパスは存在しないか、ディレクトリではありません。");
 			System.exit(1);
 		} else if ( files.length == 0 ) {
 			System.out.println("指定のディレクトリ配下にファイルが存在しません。");
