@@ -6,67 +6,63 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class FileReadAndOutPut {
-	
 	public static void main(String args[]) throws Exception{
-		/** o—Íˆ——p‚ÌMap ¦©“®ƒ\[ƒg‚ğ—˜—p‚·‚é */
+		
+		/** å‡ºåŠ›å‡¦ç†ç”¨ã®Map â€»è‡ªå‹•ã‚½ãƒ¼ãƒˆã‚’åˆ©ç”¨ã™ã‚‹  */
 		Map<String, OutputInfo> outputMap = new TreeMap<>();
-		/** ‡Œv‹àŠz */
+		/** åˆè¨ˆé‡‘é¡  */
 		long amounts = 0;
-		/** ŒŸõ‘ÎÛ‚ÌŠg’£q(.xml)*/
+		/** XMLãƒ•ã‚¡ã‚¤ãƒ«ã®æ‹¡å¼µå­(.xml) */
 		String XML = ".xml";
-		/** ƒtƒ@ƒCƒ‹@*/
-		File file = null;
-		/** ƒtƒ@ƒCƒ‹ˆê——*/
-		File files[] = null;
-		/** XMLƒtƒ@ƒCƒ‹ƒpƒXƒŠƒXƒg*/
+		/** å¯¾è±¡ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒ‘ã‚¹ ã€€*/
+		String path = args[0];
+		/** å¯¾è±¡ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé…ä¸‹ã®ãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§ã€€ */
+		File files[] = (new File(path)).listFiles();
+		/** ãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§ã®ä¸­ã‹ã‚‰XMLãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã®ã¿æŠ½å‡ºã—ãŸãƒªã‚¹ãƒˆã€€*/
 		ArrayList<String> xmlFileList = null;
 		
-		//w’è‚µ‚½ƒfƒBƒŒƒNƒgƒŠ”z‰º‚Ìƒtƒ@ƒCƒ‹ˆê——‚ğæ“¾‚µ‚Ü‚·B
-		file = new File(args[0]);
-		files = file.listFiles();
-		
-		//w’è‚ÌƒfƒBƒŒƒNƒgƒŠ”z‰º‚Éƒtƒ@ƒCƒ‹‚ª‘¶İ‚µ‚È‚¢ê‡‚Íˆ—‚ğI—¹‚µ‚Ü‚·B
+		//æŒ‡å®šã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé…ä¸‹ã«ãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ãªã„å ´åˆã¯å‡¦ç†ã‚’çµ‚äº†ã—ã¾ã™ã€‚
 		if ( files == null ) {
-			System.out.println("w’è‚ÌƒpƒX‚ÍƒfƒBƒŒƒNƒgƒŠ‚Å‚Í‚ ‚è‚Ü‚¹‚ñB");
-            System.exit(1);
+			System.out.println("æŒ‡å®šã®ãƒ‘ã‚¹ã¯ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚");
+			System.exit(1);
 		} else if ( files.length == 0 ) {
-			System.out.println("w’è‚ÌƒfƒBƒŒƒNƒgƒŠ”z‰º‚Éƒtƒ@ƒCƒ‹‚ª‘¶İ‚µ‚Ü‚¹‚ñB");
-            System.exit(1);
+			System.out.println("æŒ‡å®šã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé…ä¸‹ã«ãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ã¾ã›ã‚“ã€‚");
+			System.exit(1);
 		}
 		
 		xmlFileList = new ArrayList<String>();
 		
-		//‘ÎÛ‚ÌƒfƒBƒŒƒNƒgƒŠ”z‰º‚·‚×‚Ä‚Ì.xmlƒtƒ@ƒCƒ‹‚Ìƒtƒ‹ƒpƒX‚ğæ“¾‚µ‚Ü‚·B
+		//ãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§ã®ä¸­ã‹ã‚‰XMLãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ•ãƒ«ãƒ‘ã‚¹ã®ã¿å–å¾—ã—ã¾ã™ã€‚
 		for ( int i = 0 ; i < files.length ; i++ ) { 
 			String fileName = files[i].getName();
 			
 			if ( !files[i].isDirectory() ) {
-                if ( fileName.endsWith(XML) )
-                	xmlFileList.add( file + "/" + fileName );
+				if ( fileName.endsWith(XML) )
+					xmlFileList.add( path + "/" + fileName );
 			}
 		}
 		
-		//XMLƒtƒ@ƒCƒ‹‚ª‘¶İ‚µ‚È‚¢ê‡‚Íˆ—‚ğI—¹‚µ‚Ü‚·B
+		//XMLãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ãªã„å ´åˆã¯å‡¦ç†ã‚’çµ‚äº†ã—ã¾ã™ã€‚
 		if ( xmlFileList.size() == 0 ) {
-			System.out.println("XMLƒtƒ@ƒCƒ‹‚ª‘¶İ‚µ‚Ü‚¹‚ñ‚Å‚µ‚½B");
-            System.exit(1);
+			System.out.println("XMLãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ã¾ã›ã‚“ã§ã—ãŸã€‚");
+			System.exit(1);
 		}
 
-		//XMLƒtƒ@ƒCƒ‹‚Ìƒtƒ@ƒCƒ‹”•ªƒ‹[ƒv‚µ‚Ü‚·B
+		//XMLãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ•ã‚¡ã‚¤ãƒ«æ•°åˆ†ã€å‡¦ç†ã‚’è¡Œã„ã¾ã™ã€‚
 		for ( int i = 0 ; i < xmlFileList.size() ; i++ ) {
 			ReceiptInfo recieptInfo = null;
 			
-			//XML‚ğƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚µ‚Ü‚·B
+			//XMLã‚’ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã—ã¾ã™ã€‚
 			try {
 				recieptInfo = ReadFile.readXmlWithPath(xmlFileList.get(i), ReceiptInfo.class);
 			} catch (Exception e) {
-				System.out.println("XMLƒtƒ@ƒCƒ‹‚Ì“à—e‚ª³‚µ‚­‚ ‚è‚Ü‚¹‚ñBw’è‚ÌŒ`®‚Æˆê’v‚µ‚Ä‚¢‚é‚±‚Æ‚ğŠm”F‚µ‚Ä‚­‚¾‚³‚¢B");
-				System.out.println("‘ÎÛƒtƒ@ƒCƒ‹@u" + xmlFileList.get(i) + "v");
-	            e.printStackTrace();
-	            System.exit(1);
+				System.out.println("XMLãƒ•ã‚¡ã‚¤ãƒ«ã®å†…å®¹ãŒæ­£ã—ãã‚ã‚Šã¾ã›ã‚“ã€‚æŒ‡å®šã®å½¢å¼ã¨ä¸€è‡´ã—ã¦ã„ã‚‹ã“ã¨ã‚’ç¢ºèªã—ã¦ãã ã•ã„ã€‚");
+				System.out.println("å¯¾è±¡ãƒ•ã‚¡ã‚¤ãƒ«ã€€ã€Œ" + xmlFileList.get(i) + "ã€");
+				e.printStackTrace();
+				System.exit(1);
 			}
 			
-			//•ÏŠ·‚µ‚½ƒIƒuƒWƒFƒNƒg‚©‚çî•ñ‚ğæ“¾‚µ‚Ü‚·B
+			//å¤‰æ›ã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰æƒ…å ±ã‚’å–å¾—ã—ã¾ã™ã€‚
 			for (ItemInfo itemInfo : recieptInfo.getItems()) {
 				String id = itemInfo.getId();
 				if (!outputMap.containsKey(id)) {
@@ -78,10 +74,10 @@ public class FileReadAndOutPut {
 			}
 		}
 
-		//Œ‹‰Ê‚ğo—Í‚µ‚Ü‚·B
+		//çµæœã‚’å‡ºåŠ›ã—ã¾ã™ã€‚
 		for (String key : outputMap.keySet()) {
-			System.out.println("¤•i–¼F" + outputMap.get(key).getItemName() + "@w“üŒÂ”F" + outputMap.get(key).getItemCounts());
+			System.out.println("å•†å“åï¼š" + outputMap.get(key).getItemName() + "ã€€è³¼å…¥å€‹æ•°ï¼š" + outputMap.get(key).getItemCounts());
 		}
-		System.out.println("‡Œv‹àŠzF" + amounts + "‰~");
+		System.out.println("åˆè¨ˆé‡‘é¡ï¼š" + amounts + "å††");
 	  }
 }
