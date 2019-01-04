@@ -8,17 +8,17 @@ import java.util.TreeMap;
 public class FileReadAndOutPut {
 	public static void main(String args[]) throws Exception{
 		
-		/** 出力処理用のMap ※自動ソートを利用する */
+		/** 出力処理用のMap ※自動ソートを利用する  */
 		Map<String, OutputInfo> outputMap = new TreeMap<>();
-		/** 合計金額 */
+		/** 合計金額  */
 		long amounts = 0;
 		/** XMLファイルの拡張子(.xml) */
 		String XML = ".xml";
-		/** 対象ディレクトリパス */
+		/** 対象ディレクトリパス 　*/
 		String path = args[0];
-		/** 対象ディレクトリ配下のファイル一覧 */
+		/** 対象ディレクトリ配下のファイル一覧　 */
 		File files[] = (new File(path)).listFiles();
-		/** ファイル一覧の中からXMLファイルのパスのみ抽出したリスト */
+		/** ファイル一覧の中からXMLファイルのパスのみ抽出したリスト　*/
 		ArrayList<String> xmlFileList = null;
 		
 		//指定のパスがディレクトリであり、かつ配下にファイルが存在することを確認します。
@@ -33,11 +33,15 @@ public class FileReadAndOutPut {
 		xmlFileList = new ArrayList<String>();
 		
 		//ファイル一覧の中から、XMLファイルのフルパスのみ取得します。
-		for ( int i = 0 ; i < files.length ; i++ ) { 
-			String fileName = files[i].getName();
+		//for ( int i = 0 ; i < files.length ; i++ ) { 
+		for ( File file : files) {
+			
+			//String fileName = files[i].getName();
+			String fileName = file.getName();
 			
 			// ディレクトリの場合は次のファイルへ
-			if ( files[i].isDirectory() ) continue;
+			//if ( files[i].isDirectory() ) continue;
+			if ( file.isDirectory() ) continue;
 			// XMLファイルでない場合は次のファイルへ
 			if ( !fileName.endsWith(XML) ) continue;
 			
