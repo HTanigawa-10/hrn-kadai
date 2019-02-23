@@ -21,8 +21,6 @@ public class ParallelProcessMain {
         // 処理結果受け取り用のリストを作成
         //List<String> resultList = new ArrayList<>();
         List<Future<String>> resultList = new ArrayList<>();
-        
-        //ExecutorService executor = Executors.newSingleThreadExecutor();
 
         // 処理対象を順番にサブ処理１～３に渡して処理実行
         for(String proc : list){
