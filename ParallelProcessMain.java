@@ -6,7 +6,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-public class ParallelProcessMain2 {
+public class ParallelProcessMain {
     public static void main (String args[]){
         // 処理対象のリスト
         List<String> list = new ArrayList<>();
