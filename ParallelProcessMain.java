@@ -30,9 +30,9 @@ public class ParallelProcessMain {
 //            resultList.add(new ParallelProcessSub1(proc).process());
 //            resultList.add(new ParallelProcessSub2(proc).process());
 //            resultList.add(new ParallelProcessSub3(proc).process());
-        	resultList.add(executor.submit(new ParallelProcessSub1(proc)));
-        	resultList.add(executor.submit(new ParallelProcessSub2(proc)));
-        	resultList.add(executor.submit(new ParallelProcessSub3(proc)));
+            resultList.add(executor.submit(new ParallelProcessSub1(proc)));
+            resultList.add(executor.submit(new ParallelProcessSub2(proc)));
+            resultList.add(executor.submit(new ParallelProcessSub3(proc)));
             System.out.println(proc + "実行済み");
         }
 
