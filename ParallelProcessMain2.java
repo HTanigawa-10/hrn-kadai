@@ -29,11 +29,11 @@ public class ParallelProcessMain2 {
 //            resultList.add(new ParallelProcessSub1(proc).process());
 //            resultList.add(new ParallelProcessSub2(proc).process());
 //            resultList.add(new ParallelProcessSub3(proc).process());
-        	//単一のワーカー・スレッドを使用するexecutorを作成
-        	ExecutorService executor = Executors.newSingleThreadExecutor();
-        	resultList.add(executor.submit(new ParallelProcessSub1(proc)));
-        	resultList.add(executor.submit(new ParallelProcessSub2(proc)));
-        	resultList.add(executor.submit(new ParallelProcessSub3(proc)));
+            //単一のワーカー・スレッドを使用するexecutorを作成
+            ExecutorService executor = Executors.newSingleThreadExecutor();
+            resultList.add(executor.submit(new ParallelProcessSub1(proc)));
+            resultList.add(executor.submit(new ParallelProcessSub2(proc)));
+            resultList.add(executor.submit(new ParallelProcessSub3(proc)));
         	executor.shutdown();
             System.out.println(proc + "実行済み");
         }
