@@ -34,7 +34,7 @@ public class ParallelProcessMain2 {
             resultList.add(executor.submit(new ParallelProcessSub1(proc)));
             resultList.add(executor.submit(new ParallelProcessSub2(proc)));
             resultList.add(executor.submit(new ParallelProcessSub3(proc)));
-        	executor.shutdown();
+            executor.shutdown();
             System.out.println(proc + "実行済み");
         }
 
