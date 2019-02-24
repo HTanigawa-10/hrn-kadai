@@ -21,18 +21,18 @@ public class ParallelProcessMain {
         // 処理結果受け取り用のリストを作成
         //List<String> resultList = new ArrayList<>();
         List<Future<String>> resultList = new ArrayList<>();
+       　
+        //固定数のスレッドを再利用するスレッド・プールを作成
+        ExecutorService executor = Executors.newFixedThreadPool(3);
 
         // 処理対象を順番にサブ処理１～３に渡して処理実行
         for(String proc : list){
 //            resultList.add(new ParallelProcessSub1(proc).process());
 //            resultList.add(new ParallelProcessSub2(proc).process());
 //            resultList.add(new ParallelProcessSub3(proc).process());
-            //単一のワーカー・スレッドを使用するexecutorを作成
-            ExecutorService executor = Executors.newSingleThreadExecutor();
             resultList.add(executor.submit(new ParallelProcessSub1(proc)));
             resultList.add(executor.submit(new ParallelProcessSub2(proc)));
             resultList.add(executor.submit(new ParallelProcessSub3(proc)));
-            executor.shutdown();
             System.out.println(proc + "実行済み");
         }
 
